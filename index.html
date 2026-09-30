@@ -336,6 +336,16 @@
             cursor: pointer;
             border: 1px solid var(--separator);
         }
+        .reset-btn {
+            border: 1px solid var(--separator);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .reset-btn:active { opacity: 0.6; }
         .slider-value {
             font-size: 15px;
             color: var(--text-secondary);
@@ -745,6 +755,12 @@
                 <div class="slider-value" id="height-val">0</div>
             </div>
         </div>
+        <div class="settings-row">
+            <div class="settings-label"></div>
+            <div class="settings-control">
+                <button type="button" class="reset-btn" onclick="resetSliders()">Sozlamalarni tiklash</button>
+            </div>
+        </div>
         <div class="settings-row" id="color-row" style="display:none;">
             <div class="settings-label">Ranglar</div>
             <div class="settings-control">
@@ -1139,6 +1155,13 @@
                 btn.classList.add('selected');
             }
             updateCreateBtn();
+        }
+
+        function resetSliders() {
+            document.getElementById('size-slider').value = '1.0';
+            document.getElementById('height-slider').value = '0';
+            updateSlider('size');
+            updateSlider('height');
         }
 
         function updateSlider(type) {
